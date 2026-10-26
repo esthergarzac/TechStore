@@ -1,0 +1,16 @@
+﻿caso,pedido,estado_inicial,operacion,resultado,estado_final,eventos,detalle,coincide
+E01,O001,DRAFT,evaluar_descuento,10%,DRAFT,ninguno,"total=2100.00, unidades=4, VIP=True, promo=False",OK
+E02,O002,DRAFT,evaluar_descuento,0%,DRAFT,ninguno,"total=1050.00, unidades=2, VIP=False, promo=False",OK
+E03,O003,DRAFT,confirmar,rechazo,DRAFT,ninguno,InvalidOrderData: Requiere artículos y cliente activo,OK
+E04,O005,DRAFT,evaluar_descuento,0%,DRAFT,ninguno,"total=2100.00, unidades=4, VIP=True, promo=True",OK
+E05,O006,DRAFT,evaluar_descuento,5%,DRAFT,ninguno,"total=18000.00, unidades=1, VIP=False, promo=False",OK
+E06,O007,DRAFT,confirmar,rechazo,DRAFT,ninguno,InvalidOrderData: Requiere artículos y cliente activo,OK
+E07,O008,DRAFT,confirmar,exito,CONFIRMED,['OrderConfirmed'],,OK
+E08,O009,DRAFT,agregar SKU003 x2,rechazo,DRAFT,ninguno,OrderItemLimitExceeded: Máximo 20 unidades,OK
+E09,O010,DRAFT,evaluar_descuento,0%,DRAFT,ninguno,"total=500.00, unidades=2, VIP=False, promo=False",OK
+E10,O011,DRAFT,evaluar_descuento,0%,DRAFT,ninguno,"total=1500.00, unidades=3, VIP=True, promo=False",OK
+E11,O012,DRAFT,confirmar y enviar sin guia,rechazo,CONFIRMED,['OrderConfirmed'],InvalidOrderData: Requiere número de guía,OK
+E12,O013,DRAFT,confirmar dos veces,rechazo,CONFIRMED,['OrderConfirmed'],InvalidOrderTransition: Solo DRAFT,OK
+E13,O014,DRAFT,"confirmar, enviar y cancelar",rechazo,SHIPPED,"['OrderConfirmed', 'OrderShipped']",InvalidOrderTransition: Solo CONFIRMED puede cancelarse,OK
+E14,O015,DRAFT,"confirmar, enviar y devolver",exito,RETURNED,"['OrderConfirmed', 'OrderShipped', 'OrderReturned']",,OK
+E15,O016,DRAFT,"confirmar, enviar y entregar",exito,DELIVERED,"['OrderConfirmed', 'OrderShipped', 'OrderDelivered']",,OK
